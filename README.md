@@ -19,6 +19,4 @@ Konu hakkında daha fazla bilgi edinmek ve detaylı bir inceleme okumak için a�
 
 ![image](https://github.com/KardelRuveyda/openai-dotnet-exercises/assets/33912144/fb4e330a-09f0-4359-b1a2-7abc7c268a48)
 
-<img src="![image](https://github.com/KardelRuveyda/openai-dotnet-exercises/assets/33912144/810bbf50-8c03-41c4-931f-99cbed6fa209)
-" alt="image" width="300"/>
 
