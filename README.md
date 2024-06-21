@@ -15,8 +15,10 @@ Bu proje, OpenAI API'sini kullanarak yapay zeka özelliklerini uygulamalarınız
 
 Konu hakkında daha fazla bilgi edinmek ve detaylı bir inceleme okumak için aşağıdaki makaleyi ziyaret edebilirsiniz:
 
-<a href="https://ruveydakardelcetin.medium.com/openai-net-api-kullanımı-yapay-zeka-gücünü-net-projelerinize-taşıyın-32b9f973d97f" target="_blank">Thor ve Loki Gibi: LangChain ve LangGraph'ın Güçlü İşbirliği</a>
+<a href="https://ruveydakardelcetin.medium.com/openai-net-api-kullanımı-yapay-zeka-gücünü-net-projelerinize-taşıyın-32b9f973d97f" target="_blank">https://medium.com/@ruveydakardelcetin/openai-net-api-kullanımı-yapay-zeka-gücünü-net-projelerinize-taşıyın-32b9f973d97f</a>
 
+![image](https://github.com/KardelRuveyda/openai-dotnet-exercises/assets/33912144/fb4e330a-09f0-4359-b1a2-7abc7c268a48)
 
-<img src="![image](https://github.com/KardelRuveyda/openai-dotnet-exercises/assets/33912144/7c3ed389-c22d-4680-a9a5-307eb0cf78c5)" alt="image" width="300"/>
+<img src="![image](https://github.com/KardelRuveyda/openai-dotnet-exercises/assets/33912144/810bbf50-8c03-41c4-931f-99cbed6fa209)
+" alt="image" width="300"/>
 
