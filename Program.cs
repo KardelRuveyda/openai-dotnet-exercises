@@ -5,6 +5,6 @@ using OpenAI.Examples;
 //ChatExample.Run();
 //AudioExample.Example01_SimpleTextToSpeech();
 //StreamingChatExample.Run();
-//ToolsAndFunctionsExample.Run();
+ToolsAndFunctionsExample.Run();
 //ImageGenerateExample.Run();
-RAGExample.Main();
+//RAGExample.Main();

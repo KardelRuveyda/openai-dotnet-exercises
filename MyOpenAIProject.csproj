@@ -12,4 +12,8 @@
     <PackageReference Include="OpenAI" Version="2.0.0-beta.5" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Examples\4\" />
+  </ItemGroup>
+
 </Project>

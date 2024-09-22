@@ -17,7 +17,7 @@ namespace MyOpenAIProject.Examples
             }
 
             ImageClient client = new(model: "dall-e-3", apiKey);
-            string prompt = "2024 yılında Almanya'da düzenlenecek olan Euro 2024 için Türkiye millî futbol takımını temsil eden etkileyici bir tanıtım görseli oluşturun. Türkiye'nin futbol tutkusunu, millî takımın coşkusunu ve zafer için verdiği mücadeleyi yansıtan bir görüntü hayal edin. Tribünlerde coşkuyla destek veren taraftarlar, sahadaki mücadele dolu anlar ve millî takımın başarısını simgeleyen sembollerle dolu bir kompozisyon oluşturun. Görüntü, güçlü bir duygu uyandırmalı ve Türkiye'nin Euro 2024'teki başarısına olan inancı ve heyecanı yansıtmalı.";
+            string prompt = "Yeni mezun erkek ve kadın yazılımcılar olsun. İkisinin de kafası karışık olsun hangi alana yöneleceğim diye düşünsün.";
 
             ImageGenerationOptions options = new()
             {
