@@ -17,7 +17,7 @@ namespace MyOpenAIProject.Examples
             }
 
             ImageClient client = new(model: "dall-e-3", apiKey);
-            string prompt = "Yeni mezun erkek ve kadın yazılımcılar olsun. İkisinin de kafası karışık olsun hangi alana yöneleceğim diye düşünsün.";
+            string prompt = "İskandinav sadeliğini Japon minimalizmiyle harmanlayan bir oturma odası konsepti.";
 
             ImageGenerationOptions options = new()
             {
