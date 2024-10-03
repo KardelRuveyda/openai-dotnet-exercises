@@ -81,7 +81,7 @@ namespace MyOpenAIProject.Examples
 
             // OpenAI ChatClient oluşturuluyor
             Console.WriteLine("ChatClient oluşturuluyor...");
-            ChatClient client = new(model: "gpt-4", apiKey);
+            ChatClient client = new(model: "gpt-4o", apiKey);
 
 
             bool requiresAction;

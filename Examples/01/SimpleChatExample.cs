@@ -19,7 +19,7 @@ namespace MyOpenAIProject.Examples
             }
 
             // OpenAI ChatClient oluşturun
-            ChatClient client = new(model: "gpt-4", apiKey);
+            ChatClient client = new(model: "gpt-4o", apiKey);
 
             // Sohbet tamamlama işlemini gerçekleştirin
             ChatCompletion completion = client.CompleteChat("Say 'this is a test.'");
@@ -41,16 +41,11 @@ namespace MyOpenAIProject.Examples
                 return;
             }
 
-            // OpenAI ChatClient oluşturun
-            ChatClient client = new(model: "gpt-4", apiKey);
-
-            // Sohbet tamamlama işlemini gerçekleştirin
+            ChatClient client = new(model: "gpt-4o", apiKey);
 
             ChatCompletion completion = await client.CompleteChatAsync("Say 'this is a test.'");
 
-            // Sonucu ekrana yazdırın
-            Console.WriteLine($"[ASSISTANT]: {completion}");
-            Console.ReadLine();
+            Console.WriteLine($"[ASSISTANT]: {completion.Content[0].Text}");
         }
     }
 }

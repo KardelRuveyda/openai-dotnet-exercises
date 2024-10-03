@@ -3,7 +3,7 @@ namespace OpenAI.Examples
 {
     public class AudioExample
     {
-        public static void Example01_SimpleSpeechToText()
+        public static void SimpleSpeechToText()
         {
             string apiKey = ConfigReader.ReadApiKeyFromConfig();
 
@@ -38,7 +38,7 @@ namespace OpenAI.Examples
 
 
 
-        public static void Example02_SimpleTextToSpeech()
+        public static void SimpleTextToSpeech()
         {
             string apiKey = ConfigReader.ReadApiKeyFromConfig();
 

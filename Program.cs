@@ -1,13 +1,54 @@
-﻿// See https://aka.ms/new-console-template for more information
-using MyOpenAIProject.Examples;
+﻿using MyOpenAIProject.Examples;
+using MyOpenAIProject.Examples._05;
 using OpenAI.Examples;
-//using OpenAI.Examples;
-//ChatExample.RunAsync().Wait();
-//ChatExample.Run();
-//AudioExample.Example01_SimpleTextToSpeech();
+
+#region SimpleChatExample
+//SimpleChatExample.Run();
+//await SimpleChatExample.RunAsync();
+#endregion
+
+#region StreamingChatExample
+
 //StreamingChatExample.Run();
-//StructuredOutputs.Run();
+//await StreamingChatExample.RunAsync();
+
+#endregion
+
+
+#region ToolsAndFunctionsExample
+//ToolsAndFunctionsExample.Run();
+#endregion
+
+#region StructuredOutputs
+//await StructuredOutputs.RunWithStreaming();
+#endregion
+
+#region EmbeddingsExample
+//EmbeddingsExample.SimpleEmbedding();
+//await EmbeddingsExample.SimpleEmbeddingAsync();
+//EmbeddingsExample.MultipleEmbeddings();
+//await EmbeddingsExample.MultipleEmbeddingsAsync();
+//await EmbeddingsExample.MultipleEmbeddingsAsync();
+#endregion
+
+#region ImageGenerateExample
 //ImageGenerateExample.Run();
+#endregion
+
+#region AudioExample
+//AudioExample.SimpleTextToSpeech();
+//AudioExample.SimpleSpeechToText();
+//AudioExample.Example02_SimpleTextToSpeech();
+#endregion
+
+
+#region RAGExample
 //RAGExample.CreateAndRunEuro2024Assistant();
+#endregion
+
+
+#region GPT4VisionExample
 //GPT4VisionExample.RunAssistantWithVision();
-//AudioExample.Example01_SimpleSpeechToText();
+#endregion
+
+

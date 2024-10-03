@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Examples\4\" />
+    <Folder Include="Examples\04\" />
   </ItemGroup>
 
 </Project>

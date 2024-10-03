@@ -59,7 +59,8 @@ public class RAGExample
         AssistantCreationOptions assistantOptions = new()
         {
             Name = "Euro 2024 Maç Sonuçları Yardımcısı",
-            Instructions = "Sen, Euro 2024 maç verileri ile ilgili sorulara cevap veren bir yardımcısın. Grafik ve görsel yerine sadece metin cevapları ver.",
+            Instructions = "Sen, Euro 2024 maç verileri ile ilgili sorulara cevap veren bir yardımcısın. " +
+            "Maç verileri dışında bir soru sorulursa asla cevap verme!",
             Tools =
             {
                 new FileSearchToolDefinition(),

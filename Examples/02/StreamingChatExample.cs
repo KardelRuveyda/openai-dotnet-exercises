@@ -55,17 +55,18 @@ namespace MyOpenAIProject.Examples
             // OpenAI ChatClient oluşturun
             ChatClient client = new(model: "gpt-4", apiKey);
 
-            AsyncCollectionResult<StreamingChatCompletionUpdate> updates
-                = client.CompleteChatStreamingAsync("Say 'this is a test.'");
+            AsyncCollectionResult<StreamingChatCompletionUpdate> completionUpdates = client.CompleteChatStreamingAsync("Say 'this is a test.'");
 
-            Console.WriteLine($"[ASSISTANT]:");
-            await foreach (StreamingChatCompletionUpdate update in updates)
+            Console.Write($"[ASSISTANT]: ");
+
+            await foreach (StreamingChatCompletionUpdate completionUpdate in completionUpdates)
             {
-                foreach (ChatMessageContentPart updatePart in update.ContentUpdate)
+                if (completionUpdate.ContentUpdate.Count > 0)
                 {
-                    Console.Write(updatePart.Text);
+                    Console.Write(completionUpdate.ContentUpdate[0].Text);
                 }
             }
+
             Console.ReadLine();
         }
 
