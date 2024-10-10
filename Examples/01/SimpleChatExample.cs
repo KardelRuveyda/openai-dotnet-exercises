@@ -22,10 +22,10 @@ namespace MyOpenAIProject.Examples
             ChatClient client = new(model: "gpt-4o", apiKey);
 
             // Sohbet tamamlama işlemini gerçekleştirin
-            ChatCompletion completion = client.CompleteChat("Say 'this is a test.'");
+            ChatCompletion completion = client.CompleteChat("“Bu bir test” deyin.'");
 
             // Sonucu ekrana yazdırın
-            Console.WriteLine($"[ASSISTANT]: {completion}");
+            Console.WriteLine($"[ASSISTANT]: {completion.Content[0].Text}");
             Console.ReadLine();
         }
 
@@ -43,7 +43,7 @@ namespace MyOpenAIProject.Examples
 
             ChatClient client = new(model: "gpt-4o", apiKey);
 
-            ChatCompletion completion = await client.CompleteChatAsync("Say 'this is a test.'");
+            ChatCompletion completion = await client.CompleteChatAsync("“Bu bir test” deyin.'");
 
             Console.WriteLine($"[ASSISTANT]: {completion.Content[0].Text}");
         }

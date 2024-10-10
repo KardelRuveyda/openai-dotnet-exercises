@@ -11,16 +11,15 @@ using OpenAI.Examples;
 
 //StreamingChatExample.Run();
 //await StreamingChatExample.RunAsync();
-
 #endregion
 
 
 #region ToolsAndFunctionsExample
-//ToolsAndFunctionsExample.Run();
+ToolsAndFunctionsExample.Run();
 #endregion
 
 #region StructuredOutputs
-//await StructuredOutputs.RunWithStreaming();
+//await StructuredOutputs.RunAsync();
 #endregion
 
 #region EmbeddingsExample
@@ -43,7 +42,7 @@ using OpenAI.Examples;
 
 
 #region RAGExample
-//RAGExample.CreateAndRunEuro2024Assistant();
+RAGExample.CreateAndRunEuro2024Assistant();
 #endregion
 
 
