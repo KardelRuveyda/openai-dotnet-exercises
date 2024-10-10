@@ -9,7 +9,7 @@
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    <PackageReference Include="OpenAI" Version="2.0.0-beta.13" />
+    <PackageReference Include="OpenAI" Version="2.0.0" />
   </ItemGroup>
 
   <ItemGroup>

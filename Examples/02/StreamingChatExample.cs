@@ -22,19 +22,17 @@ namespace MyOpenAIProject.Examples
                 return;
             }
 
-            // OpenAI ChatClient oluşturun
-            ChatClient client = new(model: "gpt-4", apiKey);
+            ChatClient client = new(model: "gpt-4o", apiKey);
 
-            // Sohbet tamamlama işlemini gerçekleştirin
-            CollectionResult<StreamingChatCompletionUpdate> updates
-                = client.CompleteChatStreaming("Say 'this is a test.'");
-            // Sonucu ekrana yazdırın
-            Console.WriteLine($"[ASSISTANT]:");
-            foreach (StreamingChatCompletionUpdate update in updates)
+            CollectionResult<StreamingChatCompletionUpdate> completionUpdates = 
+                client.CompleteChatStreaming("'Bu bir testtir.' demeni istiyorum.");
+
+            Console.Write($"[ASSISTANT]: ");
+            foreach (StreamingChatCompletionUpdate completionUpdate in completionUpdates)
             {
-                foreach (ChatMessageContentPart updatePart in update.ContentUpdate)
+                if (completionUpdate.ContentUpdate.Count > 0)
                 {
-                    Console.Write(updatePart);
+                    Console.Write(completionUpdate.ContentUpdate[0].Text);
                 }
             }
             Console.ReadLine();
@@ -53,9 +51,10 @@ namespace MyOpenAIProject.Examples
             }
 
             // OpenAI ChatClient oluşturun
-            ChatClient client = new(model: "gpt-4", apiKey);
+            ChatClient client = new(model: "gpt-4o", apiKey);
 
-            AsyncCollectionResult<StreamingChatCompletionUpdate> completionUpdates = client.CompleteChatStreamingAsync("Say 'this is a test.'");
+            AsyncCollectionResult<StreamingChatCompletionUpdate> completionUpdates = 
+                client.CompleteChatStreamingAsync("'Bu bir testtir.' demeni istiyorum.");
 
             Console.Write($"[ASSISTANT]: ");
 
@@ -66,7 +65,6 @@ namespace MyOpenAIProject.Examples
                     Console.Write(completionUpdate.ContentUpdate[0].Text);
                 }
             }
-
             Console.ReadLine();
         }
 

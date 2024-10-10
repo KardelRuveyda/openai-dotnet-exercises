@@ -20,7 +20,7 @@ public class RAGExample
         }
 
         OpenAIClient openAIClient = new(apiKey);
-        FileClient fileClient = openAIClient.GetFileClient();
+        OpenAIFileClient fileClient = openAIClient.GetOpenAIFileClient();
         AssistantClient assistantClient = openAIClient.GetAssistantClient();
 
         // JSON belgesini oluştur ve dosyaya yükle

@@ -5,7 +5,7 @@ using System.Text.Json;
 public class StructuredOutputs
 {
     // Run metodu, OpenAI API'sini kullanarak yapılandırılmış bir çıktı elde eder ve sonuçları ekrana yazar
-    public static async Task Run()
+    public static async Task RunAsync()
     {
         // API anahtarını config dosyasından okuma işlemi
         Console.WriteLine("API anahtarı okunuyor...");
