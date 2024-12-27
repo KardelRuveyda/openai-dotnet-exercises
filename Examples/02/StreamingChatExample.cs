@@ -15,6 +15,8 @@ namespace MyOpenAIProject.Examples
             // API anahtarını ConfigReader sınıfından alma işlemi
             string apiKey = ConfigReader.ReadApiKeyFromConfig();
 
+            Console.WriteLine("-----API KEY OKUNDU-----");
+
             // API anahtarı alınamazsa işlemi sonlandır
             if (string.IsNullOrEmpty(apiKey))
             {
@@ -25,7 +27,7 @@ namespace MyOpenAIProject.Examples
             ChatClient client = new(model: "gpt-4o", apiKey);
 
             CollectionResult<StreamingChatCompletionUpdate> completionUpdates = 
-                client.CompleteChatStreaming("'Bu bir testtir.' demeni istiyorum.");
+                client.CompleteChatStreaming("Herkes hoş geldi ben Kardel Rüveyda Çetin demeni istiyorum.");
 
             Console.Write($"[ASSISTANT]: ");
             foreach (StreamingChatCompletionUpdate completionUpdate in completionUpdates)
@@ -53,8 +55,8 @@ namespace MyOpenAIProject.Examples
             // OpenAI ChatClient oluşturun
             ChatClient client = new(model: "gpt-4o", apiKey);
 
-            AsyncCollectionResult<StreamingChatCompletionUpdate> completionUpdates = 
-                client.CompleteChatStreamingAsync("'Bu bir testtir.' demeni istiyorum.");
+            AsyncCollectionResult<StreamingChatCompletionUpdate> completionUpdates =
+                client.CompleteChatStreamingAsync("Herkes hoş geldi ben Kardel Rüveyda Çetin demeni istiyorum.");
 
             Console.Write($"[ASSISTANT]: ");
 

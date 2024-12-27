@@ -11,6 +11,7 @@ namespace MyOpenAIProject.Examples
             // API anahtarını ConfigReader sınıfından alma işlemi
             string apiKey = ConfigReader.ReadApiKeyFromConfig();
 
+            Console.WriteLine("-----API KEY OKUNDU-----");
             // API anahtarı alınamazsa işlemi sonlandır
             if (string.IsNullOrEmpty(apiKey))
             {
@@ -33,6 +34,8 @@ namespace MyOpenAIProject.Examples
         {
             // API anahtarını ConfigReader sınıfından alma işlemi
             string apiKey = ConfigReader.ReadApiKeyFromConfig();
+
+            Console.WriteLine("-----API KEY OKUNDU-----");
 
             // API anahtarı alınamazsa işlemi sonlandır
             if (string.IsNullOrEmpty(apiKey))

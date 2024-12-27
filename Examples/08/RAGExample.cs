@@ -77,6 +77,8 @@ public class RAGExample
             },
         };
 
+        var vectorStore = assistantOptions.ToolResources.FileSearch.NewVectorStores.FirstOrDefault();
+
         // Yardımcıyı oluştur
         Assistant assistant = assistantClient.CreateAssistant("gpt-4o", assistantOptions);
 

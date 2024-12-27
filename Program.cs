@@ -15,7 +15,7 @@ using OpenAI.Examples;
 
 
 #region ToolsAndFunctionsExample
-ToolsAndFunctionsExample.Run();
+//ToolsAndFunctionsExample.Run();
 #endregion
 
 #region StructuredOutputs
@@ -42,12 +42,12 @@ ToolsAndFunctionsExample.Run();
 
 
 #region RAGExample
-RAGExample.CreateAndRunEuro2024Assistant();
+//RAGExample.CreateAndRunEuro2024Assistant();
 #endregion
 
 
 #region GPT4VisionExample
-//GPT4VisionExample.RunAssistantWithVision();
+////GPT4VisionExample.RunAssistantWithVision();
 #endregion
 
 

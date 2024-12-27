@@ -44,13 +44,9 @@ namespace OpenAI.Examples
 
             AudioClient client = new("tts-1", apiKey);
 
-            string input = "Bu kitap Developer Summit için"
-                + " okuyuculara hazırlanmış ,"
-                + " Open AI API "
-                + " ile ilgili"
-                + " çevrimiçi bir kitaptır.";
+            string input = "Bu örnekleri nereden bulacağız diye düşünmeyin hepsi kitapta var biraz sonra paylaşacağım.";
 
-            BinaryData speech = client.GenerateSpeech(input, GeneratedSpeechVoice.Alloy);
+            BinaryData speech = client.GenerateSpeech(input, GeneratedSpeechVoice.Onyx);
 
             using FileStream stream = File.OpenWrite($"{Guid.NewGuid()}.mp3");
             speech.ToStream().CopyTo(stream);

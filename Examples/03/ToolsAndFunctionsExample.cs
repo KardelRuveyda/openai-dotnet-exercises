@@ -12,12 +12,14 @@ namespace MyOpenAIProject.Examples
     {
         private static string GetCurrentLocation()
         {
+            Console.WriteLine("---- Anlık lokasyon çağırıldı.----");
             // Normalde burada konum API'si çağrılır, biz İstanbul'u sabit olarak döndüreceğiz.
             return "İstanbul";
         }
 
         private static string GetCurrentWeather(string location, string unit = "celsius")
         {
+            Console.WriteLine("---- Hava durumu çağırıldı.----");   
             // Hava durumu API'si çağrısı yapılır. Örneğin, "Bugün İstanbul'da hava 25 derece."
             return $"25 {unit} ve İstanbul'da açık bir hava var.";
         }
@@ -101,8 +103,6 @@ namespace MyOpenAIProject.Examples
 
                             // chatCompletion nesnesini kontrol etme
                             string jsonResponse = JsonSerializer.Serialize(chatCompletion);
-                            Console.WriteLine("Model Yanıtı: " + jsonResponse);
-
                             break;
                         }
 

@@ -1,0 +1,5 @@
+{
+  "OpenAI": {
+    "ApiKey": "your_openai_key"
+  }
+}
