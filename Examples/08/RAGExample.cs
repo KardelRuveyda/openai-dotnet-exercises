@@ -1,4 +1,4 @@
-﻿using OpenAI;
+using OpenAI;
 using OpenAI.Assistants;
 using OpenAI.Files;
 using System.ClientModel;
@@ -7,60 +7,54 @@ using System.ClientModel;
 
 public class RAGExample
 {
-    public static void CreateAndRunEuro2024Assistant()
+    public static void CreateAndRunGenerativeAIAssistant()
     {
-        // OpenAI istemcilerini başlat
+        // API key oku
         string apiKey = ConfigReader.ReadApiKeyFromConfig();
 
-        // API anahtarı alınamazsa işlemi sonlandır
         if (string.IsNullOrEmpty(apiKey))
         {
             Console.WriteLine("API key not found in config.json");
             return;
         }
 
+        // OpenAI client'ları başlat
         OpenAIClient openAIClient = new(apiKey);
         OpenAIFileClient fileClient = openAIClient.GetOpenAIFileClient();
         AssistantClient assistantClient = openAIClient.GetAssistantClient();
 
-        // JSON belgesini oluştur ve dosyaya yükle
+        // Belgeyi hazırla ve yükle
         using Stream document = BinaryData.FromString("""
         {
-            "description": "Bu belge, Euro 2024'e katılan takımların maç sonuçlarını içermektedir.",
-            "matches": [
+            "title": "Generative AI for .NET Developers",
+            "sections": [
                 {
-                    "date": "2024-06-10",
-                    "team1": "Türkiye",
-                    "team2": "Gürcistan",
-                    "score": "3-1"
+                    "topic": "RAG (Retrieval-Augmented Generation)",
+                    "content": "RAG yaklaşımı, LLM modellerine ek bağlam sağlayarak daha doğru ve güncel yanıtlar üretmesini sağlar. .NET geliştiricileri, belgeleri chunk'lara ayırıp embedding'lerini çıkararak vektör veritabanına yükler. Daha sonra kullanıcı sorgusu embed edilir ve en yakın parçalar modele verilir."
                 },
                 {
-                    "date": "2024-06-12",
-                    "team1": "Almanya",
-                    "team2": "Fransa",
-                    "score": "1-1"
+                    "topic": "Prompt Engineering",
+                    "content": "İyi bir prompt, sistem mesajı + kullanıcı mesajı + bağlam parçalarını içerir. Net talimatlar ve format beklentileriyle modelden daha kontrollü sonuçlar alınır."
                 },
                 {
-                    "date": "2024-06-15",
-                    "team1": "İspanya",
-                    "team2": "Portekiz",
-                    "score": "3-2"
+                    "topic": "Kod Örneği",
+                    "content": "OpenAI .NET SDK veya HttpClient kullanarak Chat API çağrısı yapılabilir. Örneğin gpt-4o-mini modelinden RAG senaryoları için hızlı ve ekonomik sonuçlar alınabilir."
                 }
             ]
         }
         """).ToStream();
 
-        OpenAIFile matchesFile = fileClient.UploadFile(
+        OpenAIFile guideFile = fileClient.UploadFile(
             document,
-            "euro2024_results.json",
+            "generative_ai_dotnet.json",
             FileUploadPurpose.Assistants);
 
-        // Yardımcı oluşturma seçeneklerini tanımla
+        // Asistan oluşturma seçenekleri
         AssistantCreationOptions assistantOptions = new()
         {
-            Name = "Euro 2024 Maç Sonuçları Yardımcısı",
-            Instructions = "Sen, Euro 2024 maç verileri ile ilgili sorulara cevap veren bir yardımcısın. " +
-            "Maç verileri dışında bir soru sorulursa asla cevap verme!",
+            Name = "Generative AI .NET Eğitim Asistanı",
+            Instructions = "Sen, 'Generative AI for .NET Developers' eğitim belgesiyle ilgili sorulara cevap veren bir yardımcısın. " +
+                           "Belge dışındaki sorulara cevap verme!",
             Tools =
             {
                 new FileSearchToolDefinition(),
@@ -71,27 +65,23 @@ public class RAGExample
                 {
                     NewVectorStores =
                     {
-                        new VectorStoreCreationHelper([matchesFile.Id]),
+                        new VectorStoreCreationHelper([guideFile.Id]),
                     }
                 }
             },
         };
 
-        var vectorStore = assistantOptions.ToolResources.FileSearch.NewVectorStores.FirstOrDefault();
+        Assistant assistant = assistantClient.CreateAssistant("gpt-4o-mini", assistantOptions);
 
-        // Yardımcıyı oluştur
-        Assistant assistant = assistantClient.CreateAssistant("gpt-4o", assistantOptions);
-
+        // Kullanıcıdan soru al - cevap döngüsü
         while (true)
         {
-            // Konsoldan soru al
-            Console.WriteLine("Sorunuzu girin (Çıkmak için 'exit' yazın):");
+            Console.WriteLine("\nSoru girin (çıkış için 'exit'): ");
             string userQuestion = Console.ReadLine();
 
-            if (userQuestion.ToLower() == "exit")
+            if (userQuestion?.ToLower() == "exit")
                 break;
 
-            // İleti dizisi oluştur ve çalıştır
             ThreadCreationOptions threadOptions = new()
             {
                 InitialMessages = { userQuestion }
@@ -99,15 +89,19 @@ public class RAGExample
 
             ThreadRun threadRun = assistantClient.CreateThreadAndRun(assistant.Id, threadOptions);
 
-            // Yardımcı tamamlanana kadar bekle
+            // Yanıt tamamlanana kadar bekle
+            Console.Write("Asistan yanıt üretiyor");
             do
             {
+                Console.Write("."); // her saniye bir nokta ekle
                 Thread.Sleep(TimeSpan.FromSeconds(1));
                 threadRun = assistantClient.GetRun(threadRun.ThreadId, threadRun.Id);
             } while (!threadRun.Status.IsTerminal);
+            Console.WriteLine();
 
-            // Mesajları al ve ekrana yazdır
-            CollectionResult<ThreadMessage> messages = assistantClient.GetMessages(threadRun.ThreadId, new MessageCollectionOptions() { Order = MessageCollectionOrder.Ascending });
+            // Yanıtı yazdır
+            CollectionResult<ThreadMessage> messages =
+                assistantClient.GetMessages(threadRun.ThreadId, new MessageCollectionOptions() { Order = MessageCollectionOrder.Ascending });
 
             foreach (ThreadMessage message in messages)
             {
@@ -116,10 +110,16 @@ public class RAGExample
                 {
                     if (!string.IsNullOrEmpty(contentItem.Text))
                     {
-                        Console.WriteLine($"{contentItem.Text}");
+                        Console.WriteLine(contentItem.Text);
                     }
                 }
             }
         }
+
+        // Kaynak temizleme (isteğe bağlı)
+        //_ = assistantClient.DeleteAssistant(assistant.Id);
+        //_ = fileClient.DeleteFile(guideFile.Id);
     }
 }
+
+#pragma warning restore OPENAI001
