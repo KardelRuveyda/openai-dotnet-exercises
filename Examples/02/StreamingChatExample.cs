@@ -1,10 +1,5 @@
 ﻿using OpenAI.Chat;
-using System;
 using System.ClientModel;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MyOpenAIProject.Examples
 {
@@ -24,7 +19,7 @@ namespace MyOpenAIProject.Examples
 
             ChatClient client = new(model: "gpt-4o", apiKey);
 
-            CollectionResult<StreamingChatCompletionUpdate> completionUpdates = 
+            CollectionResult<StreamingChatCompletionUpdate> completionUpdates =
                 client.CompleteChatStreaming("'Bu bir testtir.' demeni istiyorum.");
 
             Console.Write($"[ASSISTANT]: ");
@@ -53,7 +48,7 @@ namespace MyOpenAIProject.Examples
             // OpenAI ChatClient oluşturun
             ChatClient client = new(model: "gpt-4o", apiKey);
 
-            AsyncCollectionResult<StreamingChatCompletionUpdate> completionUpdates = 
+            AsyncCollectionResult<StreamingChatCompletionUpdate> completionUpdates =
                 client.CompleteChatStreamingAsync("'Bu bir testtir.' demeni istiyorum.");
 
             Console.Write($"[ASSISTANT]: ");

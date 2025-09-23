@@ -1,8 +1,4 @@
-﻿using MyOpenAIProject.Examples;
-using MyOpenAIProject.Examples._05;
-using OpenAI.Examples;
-
-#region SimpleChatExample
+﻿#region SimpleChatExample
 //SimpleChatExample.Run();
 //await SimpleChatExample.RunAsync();
 #endregion
@@ -15,7 +11,7 @@ using OpenAI.Examples;
 
 
 #region ToolsAndFunctionsExample
-ToolsAndFunctionsExample.Run();
+//ToolsAndFunctionsExample.Run();
 #endregion
 
 #region StructuredOutputs
@@ -42,7 +38,7 @@ ToolsAndFunctionsExample.Run();
 
 
 #region RAGExample
-RAGExample.CreateAndRunEuro2024Assistant();
+//RAGExample.CreateAndRunGenerativeAIAssistant();
 #endregion
 
 
@@ -51,3 +47,8 @@ RAGExample.CreateAndRunEuro2024Assistant();
 #endregion
 
 
+#region
+using OpenAI.Examples;
+
+O3MathSolver.Example_O1_MathProblemSolver();
+#endregion
