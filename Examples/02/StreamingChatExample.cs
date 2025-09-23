@@ -1,4 +1,4 @@
-﻿using OpenAI.Chat;
+using OpenAI.Chat;
 using System.ClientModel;
 
 namespace MyOpenAIProject.Examples

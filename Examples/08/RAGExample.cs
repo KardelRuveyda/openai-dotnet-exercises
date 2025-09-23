@@ -1,4 +1,4 @@
-﻿using OpenAI;
+using OpenAI;
 using OpenAI.Assistants;
 using OpenAI.Files;
 using System.ClientModel;

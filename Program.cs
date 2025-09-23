@@ -1,4 +1,4 @@
-﻿#region SimpleChatExample
+#region SimpleChatExample
 //SimpleChatExample.Run();
 //await SimpleChatExample.RunAsync();
 #endregion
